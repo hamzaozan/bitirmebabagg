@@ -10,6 +10,7 @@ import ButtonReturner from "./Components/Returners/ButtonReturner";
 import AddressReturner from "./Components/Returners/AddressReturner";
 import Asd from './Asd';
 import FormOut from "./FormOut";
+import Deneme from "./Deneme";
 
 function App() {
   const [submitted,setSubmitted] = useState('')
@@ -52,6 +53,7 @@ function App() {
 
   return (
     <div>
+      <Deneme/>
       <Row>
         <Col span={1}/>
         <Col span={6}>
