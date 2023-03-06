@@ -2,18 +2,17 @@ import './App.css';
 import {Checkbox, Col, Row, Space} from 'antd';
 import Card from './Components/UI/Card'
 import React,{useState} from "react";
-import TextAdder from "./Components/Adders/TextAdder";
-import CheckBoxAdder from "./Components/Adders/CheckBoxAdder";
-import ButtonAdder from "./Components/Adders/ButtonAdder";
-import DateAdder from "./Components/Adders/DateAdder";
 import ButtonReturner from "./Components/Returners/ButtonReturner";
-import AddressReturner from "./Components/Returners/AddressReturner";
-import Asd from './Asd';
-import FormOut from "./FormOut";
-import Deneme from "./Deneme";
+import DateReturner from "./Components/Returners/DateReturner";
+import LeftMenu from "./Components/LeftMenu";
+
+let süslüa='{';
+let süslüb='}';
+let küçük='<';
+let büyük='>';
 
 function App() {
-  const [submitted,setSubmitted] = useState('')
+  const [submitted,setSubmitted] = useState([])
   const [dropped, setDropped] = useState([]);
   const [enteredData,setEnteredData] = useState('')
 
@@ -42,40 +41,22 @@ function App() {
 
   function Submitter() {
     let a =''
-    for (const i in dropped){
+    setSubmitted(dropped)
+    /*for (const i in dropped){
       if(dropped[i].statement==='<text/>'){
         dropped[i].statement = '<text> entered data </text>'
       }
-      a = a+ dropped[i].statement +'\n';
-    }
-    setSubmitted(a);
+      a =dropped[i].statement +'\n';
+      setSubmitted(a);
+    }*/
   }
 
   return (
     <div>
-      <Deneme/>
       <Row>
         <Col span={1}/>
         <Col span={6}>
-          <Card>
-            <Space direction="vertical" size="small">
-              <Row>
-                <Space direction="horizontal" size="middle">
-                  <Col span={1}/>
-                  <TextAdder onDragEnd={onClick}/>
-                  <CheckBoxAdder onDragEnd={onClick}/>
-                  <ButtonAdder onDragEnd={onClick}/>
-                </Space>
-
-              </Row>
-              <Row>
-                <Col span={1}/>
-                <Col span={6}>
-                  <DateAdder onDragEnd={onClick}/>
-                </Col>
-              </Row>
-            </Space>
-          </Card>
+          <LeftMenu onClick={onClick}/>
         </Col>
         <Col span={1}/>
         <Col span={15}>
@@ -91,7 +72,7 @@ function App() {
                   {element.id === 1 && <input onChange={dataAdder}/>}
                   {element.id === 2 && <Checkbox><input/></Checkbox>}
                   {element.id === 3 && <ButtonReturner/>}
-                  {element.id === 4 && <AddressReturner/>}
+                  {element.id === 4 && <DateReturner/>}
                 </div>
               ))}
                 <button onClick={Submitter}>Submit</button>
@@ -101,11 +82,30 @@ function App() {
         </Col>
         <Col span={1}/>
       </Row>
-      <Row>
-        <div>
-          {submitted}
-        </div>
-        </Row>
+      <Row style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+        <Card>
+          <div style={{width:'125vh', margin:'8px 8px 0px'}}>
+            <div>
+              <text style={{display:'flex'}}>import React from "react";</text>
+              <text style={{display:'flex'}} >import {süslüa} Checkbox, Space {süslüb} from "antd";</text>
+              <text style={{display:'flex'}}>const App = () => {süslüa}</text>
+              <text style={{display:'flex',margin:'0px 16px 0px'}}>return(</text>
+              <text style={{margin:'0px 24px 0px'}}>{küçük}div{büyük}</text>
+            </div>
+              <ul>
+              {submitted.map((element) => (
+                <div>
+                  {element.statement}
+                </div>
+              ))}
+                </ul>
+          </div>
+        </Card>
+      </Row>
     </div>
   );
 }

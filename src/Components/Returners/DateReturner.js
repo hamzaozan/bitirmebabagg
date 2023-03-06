@@ -2,7 +2,7 @@ import React from "react";
 import {
   DatePicker
 } from 'antd';
-const AddressReturner = () =>{
+const DateReturner = () =>{
   return(
     <div>
       <DatePicker/>
@@ -10,4 +10,4 @@ const AddressReturner = () =>{
   )
 }
 
-export default AddressReturner;
+export default DateReturner;
