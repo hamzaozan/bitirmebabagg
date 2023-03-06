@@ -10,6 +10,7 @@ let süslüa='{';
 let süslüb='}';
 let küçük='<';
 let büyük='>';
+let submit=true;
 
 function App() {
   const [submitted,setSubmitted] = useState([])
@@ -49,6 +50,7 @@ function App() {
       a =dropped[i].statement +'\n';
       setSubmitted(a);
     }*/
+    submit=false;
   }
 
   return (
@@ -87,6 +89,7 @@ function App() {
         alignItems: 'center',
         justifyContent: 'center',
       }}>
+        {!submit &&
         <Card>
           <div style={{width:'125vh', margin:'8px 8px 0px'}}>
             <div>
@@ -94,7 +97,8 @@ function App() {
               <text style={{display:'flex'}} >import {süslüa} Checkbox, Space {süslüb} from "antd";</text>
               <text style={{display:'flex'}}>const App = () => {süslüa}</text>
               <text style={{display:'flex',margin:'0px 16px 0px'}}>return(</text>
-              <text style={{margin:'0px 24px 0px'}}>{küçük}div{büyük}</text>
+              <text style={{display:'flex',margin:'0px 24px 0px'}}>{küçük}div{büyük}</text>
+              <text style={{margin:'0px 32px 0px'}}>{küçük}Space direction='vertical' size='small'{büyük}</text>
             </div>
               <ul>
               {submitted.map((element) => (
@@ -105,6 +109,7 @@ function App() {
                 </ul>
           </div>
         </Card>
+        }
       </Row>
     </div>
   );
