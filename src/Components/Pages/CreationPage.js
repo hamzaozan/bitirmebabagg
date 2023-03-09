@@ -70,12 +70,14 @@ const CreationPage = () => {
 
   return (
     <div>
+      <a href='/'>
       <h2 style={{margin:'0px 0px 0px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         fontSize:'8vh'
       }}>NAO LowCode</h2>
+      </a>
       <Row style={{margin:'0px 12px 0px'}}>
         <Col span={1}/>
         <Col span={6}>
