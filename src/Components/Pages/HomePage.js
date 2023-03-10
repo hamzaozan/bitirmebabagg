@@ -14,7 +14,7 @@ const HomePage = () => {
       }}>NAO LowCode</h2>
       <div style={{margin:'12vh 75vh 0vh'}}>
         <a href='/creation'>
-          <img style={{width:'125px', margin:'0vh 8vh 0vh'}} src={DIY}/>
+          <img style={{width:'125px', margin:'0vh 4vh 0vh'}} src={DIY}/>
         </a>
         <a href='/templates'>
           <img style={{width:'90px',margin:'0vh 8vh 0vh'}} src={RTU}/>

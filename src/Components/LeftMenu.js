@@ -5,6 +5,7 @@ import TextAdder from "./Adders/TextAdder";
 import CheckBoxAdder from "./Adders/CheckBoxAdder";
 import ButtonAdder from "./Adders/ButtonAdder";
 import DateAdder from "./Adders/DateAdder";
+import LogInAdder from "./Adders/LogInAdder";
 
 const LeftMenu = (props) => {
   const onClick=(a)=>{
@@ -23,10 +24,11 @@ const LeftMenu = (props) => {
             </Space>
           </Row>
           <Row>
+            <Space direction="horizontal" size="middle">
             <Col span={1}/>
-            <Col span={6}>
               <DateAdder onDragEnd={onClick}/>
-            </Col>
+              <LogInAdder onDragEnd={onClick}/>
+            </Space>
           </Row>
         </Space>
       </Card>
