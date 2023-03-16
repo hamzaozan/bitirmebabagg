@@ -1,4 +1,4 @@
-import {Button, Checkbox, Col, Row, Space} from 'antd';
+import {Button, Checkbox, Col, Form, Input, Row, Space} from 'antd';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import Card from '../UI/Card'
 import React,{useState} from "react";
@@ -28,7 +28,9 @@ const CreationPage = () => {
     setEnteredData(event.target.value);
     console.log(enteredData)
   }
-
+  const onFinish = (values) => {
+    console.log('Success:', values);
+  };
   const onClick = (expense) => {
     const data = {
       id: expense,
@@ -42,10 +44,12 @@ const CreationPage = () => {
       data.statement = statementp1+data.enteredData+statementp2
     }else if (data.id === 2) {
       data.statement = '<Checkbox><input/></Checkbox>'
-    }else if (data.id ===3 ){
+    }else if (data.id === 3 ){
       data.statement= '<Button>my button</Button>'
-    }else if (data.id===4){
-      data.statement='<DatePicker/>'
+    }else if (data.id === 4){
+      data.statement = '<DatePicker/>'
+    }else if (data.id === 5){
+      data.statement = ''
     }
     setDropped((prevExpenses) => {
       return [data, ...prevExpenses];
@@ -63,10 +67,6 @@ const CreationPage = () => {
       setSubmitted(a);
     }*/
     submit=false;
-  }
-
-  function Remove() {
-    console.log('removed');
   }
 
   return (
@@ -89,6 +89,7 @@ const CreationPage = () => {
           <Card>
             <ul>
               <Space direction="vertical" size="small" style={{ display: 'flex' }}>
+                <Form>
                 <label style={{margin:'0px 200px 0px'}}>Enter your form name</label>
                 <input style={{margin:'0px 200px 0px'}} onChange={formNameChanger}/>
                 {dropped.map((element) => (
@@ -96,15 +97,19 @@ const CreationPage = () => {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                  }}>
-                    {element.id === 1 && <div><input onChange={dataAdder}/><MinusCircleOutlined onClick={Remove}/></div>}
-                    {element.id === 2 && <div><Checkbox><input/></Checkbox> <MinusCircleOutlined onClick={Remove}/></div>}
-                    {element.id === 3 && <div><ButtonReturner/><MinusCircleOutlined onClick={Remove}/></div>}
-                    {element.id === 4 && <div><DateReturner/><MinusCircleOutlined onClick={Remove}/></div>}
-                    {element.id === 5 && <div><LogInReturner/></div>}
+                  }}
+                  onFinish={onFinish}>
+                      {element.id === 1 && <Form.Item><Input/></Form.Item>}
+                      {element.id === 2 && <Checkbox><Form.Item><input/></Form.Item></Checkbox>}
+                      {element.id === 3 && <Form.Item><ButtonReturner/></Form.Item>}
+                      {element.id === 4 && <Form.Item><DateReturner/></Form.Item>}
+                      {element.id === 5 && <Form.Item><LogInReturner/></Form.Item>}
                   </div>
                 ))}
-                <button style={{margin:'0px 0px 8px'}} onClick={Submitter}>Submit</button>
+                  <Form.Item>
+                    <button style={{margin:'0px 0px 8px'}} onClick={onFinish}>Submit</button>
+                  </Form.Item>
+                </Form>
               </Space>
             </ul>
           </Card>
@@ -121,7 +126,7 @@ const CreationPage = () => {
             <div style={{width:'125vh', margin:'8px 8px 10px'}}>
               <div>
                 <text style={{display:'flex'}}>import React from "react";</text>
-                <text style={{display:'flex'}} >import {süslüa} Checkbox, Space, Button, DatePicker {süslüb} from "antd";</text>
+                <text style={{display:'flex'}} >import {süslüa} Checkbox, Space, Button, DatePicker, Form {süslüb} from "antd";</text>
                 <text style={{display:'flex'}}>const {formName} = () => {süslüa}</text>
                 <text style={{display:'flex',margin:'0px 16px 0px'}}>return(</text>
                 <text style={{display:'flex',margin:'0px 24px 0px'}}>{küçük}div style={süslüa}{süslüa}margin:'0px 8px 0px'{süslüb}{süslüb}{büyük}</text>
