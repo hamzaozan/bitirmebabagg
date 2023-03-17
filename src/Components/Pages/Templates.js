@@ -4,6 +4,7 @@ import {Space} from "antd";
 import Card from "../UI/Card";
 import LoginPageReturner from "../TemplatesReturns/LoginPageReturner";
 import FFOReturner from "../TemplatesReturns/FFOReturner";
+import FixedSizeCard from "../UI/FixedSizeCard";
 
 const Templates = () => {
   const onClick = (a) => {
@@ -14,18 +15,28 @@ const Templates = () => {
     }
   }
   return (
-    <div style={{margin: '0px 16px 0px'}}>
-      <Space direction='vertical' size='small'>
-        <Space direction='horizontal' size='small'>
-          <Card>
-            <label style={{margin:'8px 125px 0px'}}>Log In Page</label>
-            <LoginPageReturner onClick={onClick}/>
-          </Card>
+    <div style={{margin: '0px 30px 0px'}}>
+      <Space direction='vertical' size='middle'>
+        <div>
+          <a href='/'>
+            <h2 style={{margin:'0px 0px 0px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize:'8vh'
+            }}>NAO LowCode</h2>
+          </a>
+        </div>
+          <FixedSizeCard>
+            <h2 style={{margin:'8px 600px 0px'}}>Login Page</h2>
+            <div style={{ display:'flex',margin:'0px 400px 0px'}}>
+              <LoginPageReturner onClick={onClick}/>
+            </div>
+          </FixedSizeCard>
           <Card>
             <label style={{margin:'8px 125px 0px'}}>Dynamically Field Opener</label>
             <FFOReturner onClick={onClick}/>
           </Card>
-        </Space>
       </Space>
     </div>
   );
