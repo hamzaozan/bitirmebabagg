@@ -1,7 +1,7 @@
 import React from "react";
 import {Space} from "antd";
 
-import Card from "../UI/Card";
+import Card1 from "../UI/Card1";
 import LoginPageReturner from "../TemplatesReturns/LoginPageReturner";
 import FFOReturner from "../TemplatesReturns/FFOReturner";
 import FixedSizeCard from "../UI/FixedSizeCard";
@@ -33,10 +33,10 @@ const Templates = () => {
               <LoginPageReturner onClick={onClick}/>
             </div>
           </FixedSizeCard>
-          <Card>
+          <Card1>
             <label style={{margin:'8px 125px 0px'}}>Dynamically Field Opener</label>
             <FFOReturner onClick={onClick}/>
-          </Card>
+          </Card1>
       </Space>
     </div>
   );

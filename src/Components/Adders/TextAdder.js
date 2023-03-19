@@ -6,7 +6,7 @@ const TextAdder = (props) => {
   }
   return(
     <div>
-      <button onClick={onDragEnd}>Text</button>
+      <button style={{width:'100px',height:'50px'}} onClick={onDragEnd}>Text</button>
     </div>
   )
 }

@@ -7,7 +7,7 @@ const CheckBoxAdder = (props) =>{
   }
   return(
     <div>
-      <button onClick={onDragEnd} >Check Box</button>
+      <button style={{width:'100px',height:'50px'}} onClick={onDragEnd} >Check Box</button>
     </div>
   )
 }

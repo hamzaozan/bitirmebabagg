@@ -1,6 +1,4 @@
-import {Button, Checkbox, Col, Form, Input, Row, Space} from 'antd';
-import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
-import Card from '../UI/Card'
+import {Card , Checkbox, Col, Input, Row, Space} from 'antd';
 import React,{useState} from "react";
 import ButtonReturner from "../Returners/ButtonReturner";
 import DateReturner from "../Returners/DateReturner";
@@ -11,26 +9,17 @@ let süslüa='{';
 let süslüb='}';
 let küçük='<';
 let büyük='>';
-let submit=true;
 let formName=''
 
 const CreationPage = () => {
-  const [submitted,setSubmitted] = useState([])
+  const [submitted,setSubmitted] = useState(false);
   const [dropped, setDropped] = useState([]);
-  const [enteredData,setEnteredData] = useState('')
 
   const formNameChanger = (event) =>{
     formName=event.target.value;
     console.log(event.target.value)
   }
 
-  const dataAdder = (event) =>{
-    setEnteredData(event.target.value);
-    console.log(enteredData)
-  }
-  const onFinish = (values) => {
-    console.log('Success:', values);
-  };
   const onClick = (expense) => {
     const data = {
       id: expense,
@@ -38,10 +27,7 @@ const CreationPage = () => {
       enteredData: '',
     };
     if (data.id === 1) {
-      let statementp1='<text>'
-      data.enteredData=''//çözülmesi gereken kısımlardan biri
-      let statementp2='</text>'
-      data.statement = statementp1+data.enteredData+statementp2
+      data.statement = '<text>Deneme</text>'
     }else if (data.id === 2) {
       data.statement = '<Checkbox><input/></Checkbox>'
     }else if (data.id === 3 ){
@@ -57,16 +43,7 @@ const CreationPage = () => {
   };
 
   function Submitter() {
-    let a =''
-    setSubmitted(dropped)
-    /*for (const i in dropped){
-      if(dropped[i].statement==='<text/>'){
-        dropped[i].statement = '<text> entered data </text>'
-      }
-      a =dropped[i].statement +'\n';
-      setSubmitted(a);
-    }*/
-    submit=false;
+    setSubmitted(true);
   }
 
   return (
@@ -89,7 +66,6 @@ const CreationPage = () => {
           <Card>
             <ul>
               <Space direction="vertical" size="small" style={{ display: 'flex' }}>
-                <Form>
                 <label style={{margin:'0px 200px 0px'}}>Enter your form name</label>
                 <input style={{margin:'0px 200px 0px'}} onChange={formNameChanger}/>
                 {dropped.map((element) => (
@@ -98,18 +74,15 @@ const CreationPage = () => {
                     alignItems: 'center',
                     justifyContent: 'center',
                   }}
-                  onFinish={onFinish}>
-                      {element.id === 1 && <Form.Item><Input/></Form.Item>}
-                      {element.id === 2 && <Checkbox><Form.Item><input/></Form.Item></Checkbox>}
-                      {element.id === 3 && <Form.Item><ButtonReturner/></Form.Item>}
-                      {element.id === 4 && <Form.Item><DateReturner/></Form.Item>}
-                      {element.id === 5 && <Form.Item><LogInReturner/></Form.Item>}
+                  >
+                    {element.id === 1 && <Input/>}
+                    {element.id === 2 && <Checkbox><input/></Checkbox>}
+                    {element.id === 3 && <ButtonReturner/>}
+                    {element.id === 4 && <DateReturner/>}
+                    {element.id === 5 && <LogInReturner/>}
                   </div>
                 ))}
-                  <Form.Item>
-                    <button style={{margin:'0px 0px 8px'}} onClick={onFinish}>Submit</button>
-                  </Form.Item>
-                </Form>
+                <button style={{width:'100px',height:'50px',margin:'0px 400px 0px'}} onClick={Submitter}>Submit</button>
               </Space>
             </ul>
           </Card>
@@ -121,7 +94,7 @@ const CreationPage = () => {
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-        {!submit &&
+        {submitted &&
           <Card>
             <div style={{width:'125vh', margin:'8px 8px 10px'}}>
               <div>
@@ -133,7 +106,7 @@ const CreationPage = () => {
                 <text style={{margin:'0px 32px 0px'}}>{küçük}Space direction='vertical' size='small'{büyük}</text>
               </div>
               <ul>
-                {submitted.map((element) => (
+                {dropped.map((element) => (
                   <div>
                     {element.statement}
                   </div>

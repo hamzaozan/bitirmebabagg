@@ -6,7 +6,7 @@ const LogInAdder = (props) => {
   }
   return(
     <div>
-      <button onClick={onDragEnd}>Log In Comp.</button>
+      <button style={{width:'100px',height:'50px'}} onClick={onDragEnd}>Log In Comp.</button>
     </div>
   )
 }
