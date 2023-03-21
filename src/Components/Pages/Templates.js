@@ -29,13 +29,15 @@ const Templates = () => {
         </div>
           <FixedSizeCard>
             <h2 style={{margin:'8px 600px 0px'}}>Login Page</h2>
-            <div style={{ display:'flex',margin:'0px 400px 0px'}}>
+            <div style={{ display:'flex',margin:'0px 500px 0px'}}>
               <LoginPageReturner onClick={onClick}/>
             </div>
           </FixedSizeCard>
           <Card1>
-            <label style={{margin:'8px 125px 0px'}}>Dynamically Field Opener</label>
-            <FFOReturner onClick={onClick}/>
+            <h2 style={{width:'300px',margin:'8px 575px 0px'}}>Dynamically Field Opener</h2>
+            <div style={{ display:'flex',margin:'0px 500px 16px'}}>
+              <FFOReturner onClick={onClick}/>
+            </div>
           </Card1>
       </Space>
     </div>

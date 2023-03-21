@@ -3,7 +3,6 @@ import React,{useState} from "react";
 import ButtonReturner from "../Returners/ButtonReturner";
 import DateReturner from "../Returners/DateReturner";
 import LeftMenu from "../LeftMenu";
-import LogInReturner from "../Returners/LogInReturner";
 
 let süslüa='{';
 let süslüb='}';
@@ -79,7 +78,6 @@ const CreationPage = () => {
                     {element.id === 2 && <Checkbox><input/></Checkbox>}
                     {element.id === 3 && <ButtonReturner/>}
                     {element.id === 4 && <DateReturner/>}
-                    {element.id === 5 && <LogInReturner/>}
                   </div>
                 ))}
                 <button style={{width:'100px',height:'50px',margin:'0px 400px 0px'}} onClick={Submitter}>Submit</button>
@@ -99,7 +97,7 @@ const CreationPage = () => {
             <div style={{width:'125vh', margin:'8px 8px 10px'}}>
               <div>
                 <text style={{display:'flex'}}>import React from "react";</text>
-                <text style={{display:'flex'}} >import {süslüa} Checkbox, Space, Button, DatePicker, Form {süslüb} from "antd";</text>
+                <text style={{display:'flex'}} >import {süslüa} Checkbox, Space, Button, DatePicker {süslüb} from "antd";</text>
                 <text style={{display:'flex'}}>const {formName} = () => {süslüa}</text>
                 <text style={{display:'flex',margin:'0px 16px 0px'}}>return(</text>
                 <text style={{display:'flex',margin:'0px 24px 0px'}}>{küçük}div style={süslüa}{süslüa}margin:'0px 8px 0px'{süslüb}{süslüb}{büyük}</text>

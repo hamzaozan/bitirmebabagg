@@ -4,9 +4,8 @@ import {Card} from "antd";
 import {useState} from "react";
 
 let suslua='{'
-let susluk='}'
 let kucuk ='<'
-let buyuk = '>'
+
 const LoginPageReturner = (props) => {
   const [isEditing, setIsEditing] = useState(false);
 
@@ -23,7 +22,7 @@ const LoginPageReturner = (props) => {
       <LogInPage/>
       <button style={{margin:'0px 150px 16px'}} onClick={startEditingHandler}>
         {isEditing && <text>close</text> || <text>open</text> }
-        </button>
+      </button>
       <div>{isEditing && (
         <Card style={{width:'600px'}}>
           <text>
