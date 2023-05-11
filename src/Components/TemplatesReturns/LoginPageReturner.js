@@ -1,6 +1,6 @@
 import React from "react";
 import LogInPage from "./LogInPage";
-import {Card} from "antd";
+import {Card, Watermark} from "antd";
 import {useState} from "react";
 
 let suslua='{'
@@ -25,6 +25,7 @@ const LoginPageReturner = (props) => {
       </button>
       <div>{isEditing && (
         <Card style={{width:'600px'}}>
+          <Watermark content="Nao Low-Code">
           <text>
             import React from "react"<br/>
             import {suslua} Button, Checkbox, Form, Input } from 'antd';<br/>
@@ -128,6 +129,7 @@ const LoginPageReturner = (props) => {
             );<br/>
             export default LogInPage;<br/>
           </text>
+          </Watermark>
         </Card>
       )}
       </div>

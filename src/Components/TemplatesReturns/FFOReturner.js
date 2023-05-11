@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import FormFieldOpener from "./FormFieldOpener";
-import {Card} from "antd";
+import {Card, Watermark} from "antd";
 
 let suslua='{'
 let kucuk ='<'
@@ -25,6 +25,7 @@ const LoginPageReturner = (props) => {
       </button>
       <div>{isEditing && (
         <Card style={{width:'700px'}}>
+          <Watermark content='Nao-Lowcode'>
           <text>
             import {suslua} MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';<br/>
             import {suslua} Button, Form, Input } from 'antd';<br/>
@@ -162,6 +163,7 @@ const LoginPageReturner = (props) => {
             <text> <br/> </text>
             export default FormFieldOpener;<br/>
           </text>
+          </Watermark>
         </Card>)}
       </div>
     </div>

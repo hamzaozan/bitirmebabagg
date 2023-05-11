@@ -3,20 +3,21 @@ import React,{useState} from "react";
 import ButtonReturner from "../Returners/ButtonReturner";
 import DateReturner from "../Returners/DateReturner";
 import LeftMenu from "../LeftMenu";
+import DnD from "../DnD";
 
 let süslüa='{';
 let süslüb='}';
 let küçük='<';
 let büyük='>';
-let formName=''
+let formName='';
+const DUMMY_SUBMITS= []
 
 const CreationPage = () => {
   const [submitted,setSubmitted] = useState(false);
   const [dropped, setDropped] = useState([]);
-
+  const [formName, setFormName] = useState('')
   const formNameChanger = (event) =>{
-    formName=event.target.value;
-    console.log(event.target.value)
+    setFormName(event.target.value);
   }
 
   const onClick = (expense) => {

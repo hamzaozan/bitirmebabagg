@@ -1,5 +1,5 @@
 import React from "react";
-import {Space} from "antd";
+import {Space, Watermark} from "antd";
 
 import Card1 from "../UI/Card1";
 import LoginPageReturner from "../TemplatesReturns/LoginPageReturner";
@@ -16,7 +16,7 @@ const Templates = () => {
   }
   return (
     <div style={{margin: '0px 30px 0px'}}>
-      <Space direction='vertical' size='middle'>
+      <Space direction='vertical' size='middle' style={{zIndex:'2'}} >
         <div>
           <a href='/'>
             <h2 style={{margin:'0px 0px 0px',
