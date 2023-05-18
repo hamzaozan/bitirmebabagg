@@ -9,8 +9,7 @@ let süslüa='{';
 let süslüb='}';
 let küçük='<';
 let büyük='>';
-let formName='';
-const DUMMY_SUBMITS= []
+let count=0;
 
 const CreationPage = () => {
   const [submitted,setSubmitted] = useState(false);
@@ -22,6 +21,7 @@ const CreationPage = () => {
 
   const onClick = (expense) => {
     const data = {
+      key: count,
       id: expense,
       statement: '',
       enteredData: '',
@@ -40,6 +40,7 @@ const CreationPage = () => {
     setDropped((prevExpenses) => {
       return [data, ...prevExpenses];
     });
+    count++;
   };
 
   function Submitter() {
@@ -82,6 +83,9 @@ const CreationPage = () => {
                   </div>
                 ))}
                 <button style={{width:'100px',height:'50px',margin:'0px 400px 0px'}} onClick={Submitter}>Submit</button>
+                <a href='/dnd'>
+                 <button>to dnd part</button>
+                </a>
               </Space>
             </ul>
           </Card>
