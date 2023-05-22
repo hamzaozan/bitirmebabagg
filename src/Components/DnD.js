@@ -3,22 +3,26 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import {Button, Checkbox, Input} from "antd";
 import creationPage from "./Pages/CreationPage";
 
+let count=4;
 const finalSpaceCharacters = [
   {
     id:1,
-    key: 'button',
+    key: '1',
+    statement: 'button',
     name: 'Gary Goodspeed',
     thumb: '/images/gary.png'
   },
   {
     id:2,
-    key: 'chckbx',
+    key: '2',
+    statement: 'chckbx',
     name: 'Little Cato',
     thumb: '/images/cato.png'
   },
   {
     id:3,
-    key: 'input',
+    key: '3',
+    statement: 'input',
     name: 'KVN',
     thumb: '/images/kvn.png'
   },
@@ -34,12 +38,23 @@ function DnD() {
 
     updateCharacters(items)
   }
-  let count=4;
-  const onClick = (expense) => {
+  const onClickbtn = (expense) => {
     const data = {
       id: count,
-      key: 'button',
-      statement: '',
+      key: count.toString(),
+      statement: 'button',
+      enteredData: '',
+    };
+    updateCharacters((prevExpenses) => {
+      return [data, ...prevExpenses];
+    });
+    count++;
+  }
+  const onClickchckbx = (expense) => {
+    const data = {
+      id: count,
+      key: count.toString(),
+      statement: 'chckbx',
       enteredData: '',
     };
     updateCharacters((prevExpenses) => {
@@ -50,21 +65,22 @@ function DnD() {
 
   return (
     <div className="App">
-      <button onClick={onClick}></button>
+      <button onClick={onClickbtn}>Button Adder</button>
+      <button onClick={onClickchckbx}>CheckBox Adder</button>
       <header className="App-header">
         <h1>Final Space Characters</h1>
         <DragDropContext onDragEnd={handleOnDragEnd}>
           <Droppable droppableId="characters">
             {(provided) => (
               <ul className="characters" {...provided.droppableProps} ref={provided.innerRef}>
-                {characters.map(({id,key, name, thumb}, index) => {
+                {characters.map(({id,key, name, thumb,statement}, index) => {
                   return (
                     <Draggable key={id} draggableId={key} index={index}>
                       {(provided) => (
                         <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                          {key==='button' && <Button/>}
-                          {key==='chckbx' && <Checkbox/>}
-                          {key==='input' && <Input/>}
+                          {statement==='button' && <Button/>}
+                          {statement==='chckbx' && <Checkbox/>}
+                          {statement==='input' && <Input/>}
                         </li>
                       )}
                     </Draggable>
