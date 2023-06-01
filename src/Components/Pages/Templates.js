@@ -19,10 +19,7 @@ const Templates = () => {
       <Space direction='vertical' size='middle' style={{zIndex:'2'}} >
         <div>
           <a href='/'>
-            <h2 style={{margin:'0px 0px 0px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
+            <h2 style={{margin:'0px 523px 0px',
               fontSize:'8vh'
             }}>NAO LowCode</h2>
           </a>

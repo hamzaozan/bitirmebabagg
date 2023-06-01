@@ -1,9 +1,10 @@
-import {Card , Checkbox, Col, Input, Row, Space} from 'antd';
+import {Button, Card, Checkbox, Col, Input, Row, Space} from 'antd';
 import React,{useState} from "react";
 import ButtonReturner from "../Returners/ButtonReturner";
 import DateReturner from "../Returners/DateReturner";
 import LeftMenu from "../LeftMenu";
 import DnD from "../DnD";
+import {DragDropContext, Draggable, Droppable} from "react-beautiful-dnd";
 
 let süslüa='{';
 let süslüb='}';
@@ -15,23 +16,57 @@ const CreationPage = () => {
   const [submitted,setSubmitted] = useState(false);
   const [dropped, setDropped] = useState([]);
   const [formName, setFormName] = useState('')
+  const [characters, updateCharacters] = useState(dropped);
+  function handleOnDragEnd(result) {
+    if (!result.destination) return;
+    const items = Array.from(characters);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+
+    updateCharacters(items)
+  }
   const formNameChanger = (event) =>{
     setFormName(event.target.value);
   }
 
   const onClick = (expense) => {
     const data = {
-      key: count,
       id: expense,
-      statement: '',
-      enteredData: '',
     };
     if (data.id === 1) {
-      data.statement = '<text>Deneme</text>'
+      const data = {
+        id: count,
+        key: count.toString(),
+        statement: 'input',
+        out: '<Input>choice<Input/>',
+        enteredData: '',
+      };
+      updateCharacters((prevExpenses) => {
+        return [data, ...prevExpenses];
+      });
     }else if (data.id === 2) {
-      data.statement = '<Checkbox><input/></Checkbox>'
+      const data = {
+        id: count,
+        key: count.toString(),
+        statement: 'chckbx',
+        out: '<Checkbox>choice<Checkbox/>',
+        enteredData: '',
+      };
+      updateCharacters((prevExpenses) => {
+        return [data, ...prevExpenses];
+      });
+      count++;
     }else if (data.id === 3 ){
-      data.statement= '<Button>my button</Button>'
+      const data = {
+        id: count,
+        key: count.toString(),
+        statement: 'button',
+        enteredData: '',
+      };
+      updateCharacters((prevExpenses) => {
+        return [data, ...prevExpenses];
+      });
+      count++;
     }else if (data.id === 4){
       data.statement = '<DatePicker/>'
     }else if (data.id === 5){
@@ -65,10 +100,38 @@ const CreationPage = () => {
         <Col span={1}/>
         <Col span={15}>
           <Card>
+            <div>
+              <label style={{margin:'0px 200px 0px'}}>Enter your form name</label>
+              <input style={{margin:'0px 200px 0px'}} onChange={formNameChanger}/>
+              <DragDropContext onDragEnd={handleOnDragEnd}>
+                <Droppable droppableId="characters">
+                  {(provided) => (
+                    <ul className="characters" {...provided.droppableProps} ref={provided.innerRef}>
+                      {characters.map(({id,key, name, thumb,statement}, index) => {
+                        return (
+                          <Draggable key={id} draggableId={key} index={index}>
+                            {(provided) => (
+                              <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                                {statement==='button' && <Button/>}
+                                {statement==='chckbx' && <Checkbox/>}
+                                {statement==='input' && <Input/>}
+                              </li>
+                            )}
+                          </Draggable>
+                        );
+                      })}
+                      {provided.placeholder}
+                    </ul>
+                  )}
+                </Droppable>
+              </DragDropContext>
+            </div>
+            {/*
             <ul>
               <Space direction="vertical" size="small" style={{ display: 'flex' }}>
                 <label style={{margin:'0px 200px 0px'}}>Enter your form name</label>
                 <input style={{margin:'0px 200px 0px'}} onChange={formNameChanger}/>
+                <DnD list={dropped}/>
                 {dropped.map((element) => (
                   <div style={{
                     display: 'flex',
@@ -87,7 +150,8 @@ const CreationPage = () => {
                  <button>to dnd part</button>
                 </a>
               </Space>
-            </ul>
+            </ul>*/}
+            <button style={{width:'100px',height:'50px',margin:'0px 400px 0px'}} onClick={Submitter}>Submit</button>
           </Card>
         </Col>
         <Col span={1}/>
@@ -109,9 +173,9 @@ const CreationPage = () => {
                 <text style={{margin:'0px 32px 0px'}}>{küçük}Space direction='vertical' size='small'{büyük}</text>
               </div>
               <ul>
-                {dropped.map((element) => (
+                {characters.map((element) => (
                   <div>
-                    {element.statement}
+                    {element.out}
                   </div>
                 ))}
               </ul>

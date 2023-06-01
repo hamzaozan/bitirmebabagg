@@ -3,33 +3,10 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import {Button, Checkbox, Input} from "antd";
 import creationPage from "./Pages/CreationPage";
 
-let count=4;
-const finalSpaceCharacters = [
-  {
-    id:1,
-    key: '1',
-    statement: 'button',
-    name: 'Gary Goodspeed',
-    thumb: '/images/gary.png'
-  },
-  {
-    id:2,
-    key: '2',
-    statement: 'chckbx',
-    name: 'Little Cato',
-    thumb: '/images/cato.png'
-  },
-  {
-    id:3,
-    key: '3',
-    statement: 'input',
-    name: 'KVN',
-    thumb: '/images/kvn.png'
-  },
-]
+let count=1;
 
-function DnD() {
-  const [characters, updateCharacters] = useState(finalSpaceCharacters);
+function DnD(props) {
+  const [characters, updateCharacters] = useState(props.list);
   function handleOnDragEnd(result) {
     if (!result.destination) return;
     const items = Array.from(characters);
@@ -67,8 +44,6 @@ function DnD() {
     <div className="App">
       <button onClick={onClickbtn}>Button Adder</button>
       <button onClick={onClickchckbx}>CheckBox Adder</button>
-      <header className="App-header">
-        <h1>Final Space Characters</h1>
         <DragDropContext onDragEnd={handleOnDragEnd}>
           <Droppable droppableId="characters">
             {(provided) => (
@@ -91,7 +66,6 @@ function DnD() {
             )}
           </Droppable>
         </DragDropContext>
-      </header>
     </div>
   );
 }
