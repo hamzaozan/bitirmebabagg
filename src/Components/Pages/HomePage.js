@@ -1,7 +1,7 @@
 import React from "react";
 import DIY from '../../do-yourself-stamp-round-grunge-sign-tag-172112486.jpg'
 import RTU from '../../ReadyTU.jpg'
-import {Space} from "antd";
+import {Checkbox, Space} from "antd";
 
 const HomePage = () => {
   return(

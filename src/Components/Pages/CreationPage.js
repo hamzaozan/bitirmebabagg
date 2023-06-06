@@ -1,5 +1,6 @@
-import {Button, Card, Checkbox, Col, Input, Row, Space} from 'antd';
+import {Button, Card, Checkbox, Col, DatePicker, Input, Row, Space} from 'antd';
 import React,{useState} from "react";
+import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import ButtonReturner from "../Returners/ButtonReturner";
 import DateReturner from "../Returners/DateReturner";
 import LeftMenu from "../LeftMenu";
@@ -37,8 +38,8 @@ const CreationPage = () => {
       const data = {
         id: count,
         key: count.toString(),
-        statement: 'input',
-        out: '<Input>choice<Input/>',
+        statement: 'text',
+        out: '<text>choice<text/>',
         enteredData: '',
       };
       updateCharacters((prevExpenses) => {
@@ -49,7 +50,7 @@ const CreationPage = () => {
         id: count,
         key: count.toString(),
         statement: 'chckbx',
-        out: '<Checkbox>choice<Checkbox/>',
+        out: '<Checkbox/><label>Choice</label>',
         enteredData: '',
       };
       updateCharacters((prevExpenses) => {
@@ -61,6 +62,7 @@ const CreationPage = () => {
         id: count,
         key: count.toString(),
         statement: 'button',
+        out: '<Button>choice<Button/>',
         enteredData: '',
       };
       updateCharacters((prevExpenses) => {
@@ -68,9 +70,29 @@ const CreationPage = () => {
       });
       count++;
     }else if (data.id === 4){
-      data.statement = '<DatePicker/>'
+      const data = {
+        id: count,
+        key: count.toString(),
+        statement: 'DatePicker',
+        out: '<DatePicker/>',
+        enteredData: '',
+      };
+      updateCharacters((prevExpenses) => {
+        return [data, ...prevExpenses];
+      });
+      count++;
     }else if (data.id === 5){
-      data.statement = ''
+      const data = {
+        id: count,
+        key: count.toString(),
+        statement: 'input',
+        out: '<Input/>',
+        enteredData: '',
+      };
+      updateCharacters((prevExpenses) => {
+        return [data, ...prevExpenses];
+      });
+      count++;
     }
     setDropped((prevExpenses) => {
       return [data, ...prevExpenses];
@@ -112,9 +134,11 @@ const CreationPage = () => {
                           <Draggable key={id} draggableId={key} index={index}>
                             {(provided) => (
                               <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                                {statement==='button' && <Button/>}
-                                {statement==='chckbx' && <Checkbox/>}
-                                {statement==='input' && <Input/>}
+                                {statement==='button' && <Button style={{height:'50px',width:'120px'}}><input style={{borderColor:'white',width:'80px'}}/></Button>}
+                                {statement==='chckbx' && <><Checkbox/><Input style={{width:'200px'}}/></>}
+                                {statement==='input' && <><Input style={{width:'400px'}}/></>}
+                                {statement==='DatePicker' && <><DatePicker/></>}
+                                {statement==='text' && <><Input style={{width:'400px'}}/></>}
                               </li>
                             )}
                           </Draggable>

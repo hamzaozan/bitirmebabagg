@@ -4,7 +4,6 @@ import CreationPage from "./Components/Pages/CreationPage";
 import HomePage from "./Components/Pages/HomePage";
 import Templates from "./Components/Pages/Templates";
 import DnD from "./Components/DnD";
-import Deneme from "./Deneme";
 
 function App() {
   return (
@@ -14,7 +13,6 @@ function App() {
         <Route path='/creation' element={<CreationPage />} />
         <Route path='/templates' element={<Templates/>}/>
         <Route path='/dnd' element={<DnD/>}/>
-        <Route path='/deneme' element={<Deneme/>}/>
       </Routes>
     </Router>
   );
